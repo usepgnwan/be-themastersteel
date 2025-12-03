@@ -1,0 +1,12 @@
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Ignore the tmp directory and its contents
+/tmp/
+/oauth/config/config.json
+
+# Ignore swager
+/docs/
