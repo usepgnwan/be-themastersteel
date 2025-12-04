@@ -62,6 +62,7 @@ func InitRouting(e *echo.Echo) {
 	}))
 
 	swaggerGroup.GET("/swagger/*", echoSwagger.WrapHandler)
+	e.Static("/uploads", "uploads")
 	api := e.Group("/api")
 	api.Use(HeaderAuthorizationMiddleware)
 
@@ -69,6 +70,8 @@ func InitRouting(e *echo.Echo) {
 	jwtGroup.Use(echojwt.WithConfig(config))
 
 	RouteUser(api)
+	RouteRole(api)
+	RouteProduct(api)
 }
 
 func HeaderAuthorizationMiddleware(next echo.HandlerFunc) echo.HandlerFunc {

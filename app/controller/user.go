@@ -3,7 +3,6 @@ package controller
 import (
 	. "be-metalsteel/app/helpers"
 	"be-metalsteel/app/model"
-	"be-metalsteel/app/utils"
 	"be-metalsteel/connection"
 	"fmt"
 	"net/http"
@@ -20,7 +19,7 @@ import (
 // @Description  list user
 // @Param page query int false "(default : 1)"
 // @Param limit query int false "(default : 10)"
-// @Param fullname query string false "(optional)"
+// @Param name query string false "(optional)"
 // @Success 200 {object} Response
 // @Failure 400 {object} Response
 // @Router /api/user [get]
@@ -33,18 +32,16 @@ func GetUser(c echo.Context) error {
 	db := connection.DB
 	query := db.Model(&model.User{}).Preload("UserRole")
 
-	fullname := c.QueryParam("fullname")
+	name := c.QueryParam("name")
 
-	if fullname != "" {
-		query = query.Where("fullname ILIKE  ?", "%"+fullname+"%")
+	if name != "" {
+		query = query.Where("name ILIKE  ?", "%"+name+"%")
 	}
 
 	result := data.Paginate(query, c)
 
 	return c.JSON(http.StatusOK, Response{Message: "success get data", Status: true, Data: result})
 }
-
-var UsingCrudHelper *utils.Crud
 
 // @Tags User
 // @Summary registrasi user

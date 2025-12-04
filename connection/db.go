@@ -52,7 +52,10 @@ func ConnectDB() {
 
 func AutoMigrateModels() {
 	err := DB.AutoMigrate(
-		&model.User{}, 
+		&model.User{},
+		&model.UserRole{},
+		&model.Product{},
+		&model.ProductImage{},
 	)
 	if err != nil {
 		log.Fatalf("Failed to auto migrate models: %v", err)
