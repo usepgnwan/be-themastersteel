@@ -102,10 +102,10 @@ func PostProductImage(c echo.Context) error {
 	if len(valErr) > 0 {
 		return c.JSON(http.StatusBadRequest, Response{Message: "validation failed", Status: false})
 	}
-	files, err := GetDataFile64(data.Src)
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, Response{Status: false, Message: err.Error()})
-	}
+	// files, err := GetDataFile64(data.Src)
+	// if err != nil {
+	// 	return c.JSON(http.StatusInternalServerError, Response{Status: false, Message: err.Error()})
+	// }
 
 	tmpThumb, err := Base64ToFile(data.Src, data.FileName)
 	if err != nil {
