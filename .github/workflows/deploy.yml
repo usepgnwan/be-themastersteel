@@ -42,6 +42,13 @@ jobs:
           echo "Connecting to server and deploying..."
           ssh -o StrictHostKeyChecking=no -p 22 $SSH_USER@$SSH_HOST 'bash -s' << 'EOF'
           set -e
+          export PATH=$PATH:/home/ubuntu/go/bin
+          echo "Verifikasi Go..."
+          if ! command -v go &> /dev/null; then
+            echo "Go is not installed or not in PATH"
+            exit 1
+          fi
+          go version
           echo "Deploying on server..."
           cd  /var/www/usepgnwan/be-themastersteel
           git pull origin main 
