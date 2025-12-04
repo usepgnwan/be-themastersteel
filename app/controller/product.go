@@ -117,7 +117,7 @@ func PostProductImage(c echo.Context) error {
 
 	defer os.Remove(tmpThumb.Name())
 
-	nameThumb := data.FileName + files.Ext
+	nameThumb := data.FileName
 
 	uploadDir := "uploads/product-images"
 	os.MkdirAll(uploadDir, 0755)
