@@ -18,7 +18,7 @@ type Cart struct {
 	Harga        string  `gorm:"column:harga;size:255;" json:"harga"`
 	Qty          string  `gorm:"column:qty;size:255;" json:"qty"`
 	TotalHarga   string  `gorm:"column:total_harga;size:255;" json:"total_harga"`
-	Category     *string `gorm:"column:category;" json:"category" validate:"required"`
+	Category     *string `gorm:"column:category;" json:"category" `
 	ProductImage string  `gorm:"column:product_image;type:text;" json:"product_image"`
 
 	CreatedAt time.Time      `json:"created_at" swaggerignore:"true"`
