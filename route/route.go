@@ -72,6 +72,7 @@ func InitRouting(e *echo.Echo) {
 	RouteUser(api)
 	RouteRole(api)
 	RouteProduct(api)
+	RouteCart(api)
 }
 
 func HeaderAuthorizationMiddleware(next echo.HandlerFunc) echo.HandlerFunc {

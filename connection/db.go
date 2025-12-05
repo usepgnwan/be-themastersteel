@@ -56,6 +56,7 @@ func AutoMigrateModels() {
 		&model.UserRole{},
 		&model.Product{},
 		&model.ProductImage{},
+		&model.Cart{},
 	)
 	if err != nil {
 		log.Fatalf("Failed to auto migrate models: %v", err)
